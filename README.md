@@ -1,25 +1,26 @@
 # AWS VPC Infrastructure — Terraform
 
-Production-grade AWS network infrastructure built with Terraform. Implements a 
-multi-tier architecture with full network isolation, automated provisioning, 
-and secure access controls.
+Production-grade AWS network infrastructure built with Terraform. Implements a multi-tier architecture with full network isolation, automated provisioning, and secure access controls.
 
 ---
 
 ## Architecture Overview
+
+```
 Internet Gateway
-│
-┌────▼─────┐
-│   ALB    │  (Public Subnet)
-└────┬─────┘
-│
-┌────▼─────┐
-│   EC2    │  (Private Subnet)
-└────┬─────┘
-│
-┌────▼─────┐
-│NAT Gateway│ (Outbound only)
-└──────────┘
+       │
+  ┌────▼─────┐
+  │   ALB    │  (Public Subnet)
+  └────┬─────┘
+       │
+  ┌────▼─────┐
+  │   EC2    │  (Private Subnet)
+  └────┬─────┘
+       │
+  ┌────▼─────┐
+  │NAT Gateway│  (Outbound only)
+  └──────────┘
+```
 
 ---
 
@@ -36,16 +37,19 @@ Internet Gateway
 ---
 
 ## Project Structure
+
+```
 aws-vpc-terraform/
-├── main.tf                  # Root module — ties everything together
-├── variables.tf             # Input variable declarations
-├── outputs.tf               # Output values
-├── terraform.tfvars         # Variable values (not committed in production)
+├── main.tf
+├── variables.tf
+├── outputs.tf
+├── terraform.tfvars
 ├── modules/
-│   ├── vpc/                 # VPC, subnets, IGW, NAT, route tables
-│   ├── ec2/                 # EC2 instance provisioning, IAM roles
-│   └── security_groups/     # Security group rules
+│   ├── vpc/
+│   ├── ec2/
+│   └── security_groups/
 └── README.md
+```
 
 ---
 
@@ -60,16 +64,9 @@ aws-vpc-terraform/
 ## Usage
 
 ```bash
-# Initialize Terraform
 terraform init
-
-# Preview changes
 terraform plan
-
-# Apply infrastructure
 terraform apply
-
-# Destroy when done
 terraform destroy
 ```
 
