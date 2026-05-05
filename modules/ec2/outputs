@@ -1,0 +1,17 @@
+# Output the EC2 instance ID
+output "instance_id" {
+  description = "The ID of the EC2 instance"
+  value       = aws_instance.main.id
+}
+
+# Output the private IP of the EC2 instance
+output "private_ip" {
+  description = "The private IP address of the EC2 instance"
+  value       = aws_instance.main.private_ip
+}
+
+# Output the IAM role name for reference
+output "iam_role_name" {
+  description = "The name of the IAM role attached to EC2"
+  value       = aws_iam_role.ec2_role.name
+}
